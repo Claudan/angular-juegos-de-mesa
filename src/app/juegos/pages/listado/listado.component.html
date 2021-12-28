@@ -1,0 +1,30 @@
+<div class="container">
+  <h3>Panel de juegos de mesa</h3>
+
+  <div class="PreviewContainer row">
+    <div class="col-lg-6 col-sm-12" *ngFor="let juego of juegos">
+      <div class="cardPreview">
+        <h5 class="card-title">{{ juego.nombre }}</h5>
+        <div class="imgContainer">
+          <img
+            class="card-img-top"
+            src="{{ juego.imagenes[0] }}"
+            alt="Card image cap"
+          />
+        </div>
+        <div class="card-body">
+          <ul>
+            <li>Desarrollador: {{ juego.desarrollador }}</li>
+            <li>Edad mínima: {{ juego.edad_minima }} años</li>
+            <li>
+              Jugadores: {{ juego.cantidad_jugadores_minima }} " - "
+              {{ juego.cantidad_jugadores_maxima }}
+            </li>
+            <li>Duración aproximada: {{ juego.duracion }} minutos</li>
+          </ul>
+          <a class="valorar btn btn-light"> ver detalles </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

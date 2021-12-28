@@ -1,0 +1,73 @@
+<div class="sidebar">
+  <div class="userContainer">
+    <div class="avatarContainer">
+      <span class="avatar">UI</span>
+    </div>
+    <p class="nombre">Usuario Invitado</p>
+  </div>
+  <div class="menu">
+    <p class="tituloMenu">Menu</p>
+    <ul class="ul">
+      <li>
+        <a routerLinkActive="active" routerLink="/juegos/listado">
+          <fa-icon [icon]="faGamepad" class="faGamepad"></fa-icon>
+          Panel de juegos
+        </a>
+      </li>
+      <li>
+        <a routerLinkActive="active" routerLink="/juegos/agregar-juego">
+          <fa-icon [icon]="faPlus" class="faPlus"></fa-icon>
+          Agregar juego
+        </a>
+      </li>
+      <li>
+        <a routerLinkActive="active" routerLink="/juegos/api-rest">
+          <fa-icon [icon]="faCode" class="faCode"></fa-icon>
+          API REST
+        </a>
+      </li>
+      <li>
+        <a routerLinkActive="active" routerLink="/juegos/arquitectura">
+          <fa-icon [icon]="faAws" class="faAws"></fa-icon>
+          Arquitectura del sistema
+        </a>
+      </li>
+      <li>
+        <a routerLinkActive="active" routerLink="/juegos/mas-informacion">
+          <fa-icon [icon]="faGithubAlt" class="faGithubAlt"></fa-icon>
+          Más info y Github
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="mainLayout main-layout">
+  <nav class="nav">
+    <div class="buscadorContainer">
+      <div>
+        <fa-icon [icon]="faBars" class="faBars"></fa-icon>
+      </div>
+      <form class="formBusqueda">
+        <span class="spanBusqueda">
+          <fa-icon [icon]="faSearch" class="faSearch"></fa-icon>
+        </span>
+        <div class="autocomplete">
+          <input
+            class="form-control inputBusqueda"
+            type="search"
+            aria-label="Search"
+            autoComplete="off"
+            placeholder="Búsqueda"
+            name="q"
+          />
+          <div class="autocompleteItems"></div>
+        </div>
+      </form>
+    </div>
+
+    <div class="logo">
+      <img src="assets/angular.svg" alt="Angular" class="angularLogo" />
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
+</div>
