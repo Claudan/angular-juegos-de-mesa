@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faInfo } from '@fortawesome/free-solid-svg-icons';
 import { Juego } from '../../interfaces/juegos.interface';
 import { JuegosService } from '../../services/juegos.service';
 
@@ -9,6 +10,7 @@ import { JuegosService } from '../../services/juegos.service';
 })
 export class ListadoComponent implements OnInit {
   juegos: Juego[] = [];
+  faInfo = faInfo;
   constructor(private JuegosService: JuegosService) {}
 
   ngOnInit(): void {

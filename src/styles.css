@@ -35,3 +35,6 @@ html {
 .faBars svg {
   height: 50px;
 }
+.container {
+  max-width: 100% !important;
+}

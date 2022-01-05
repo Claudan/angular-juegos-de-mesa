@@ -1,0 +1,56 @@
+.container {
+  padding: 25px;
+  background-color: #f6f6f9;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-clip: border-box;
+  margin-bottom: 24px;
+  -webkit-box-shadow: 0 0.75rem 1.5rem rgb(18 38 63 / 3%);
+  box-shadow: 0 0.75rem 1.5rem rgb(18 38 63 / 3%);
+  width: 100%;
+  border-radius: 15px;
+  background-color: #fff;
+}
+
+h3 {
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 16px !important;
+  color: #495057;
+  margin-bottom: 20px;
+}
+
+.imgContainer {
+  padding: 20px !important;
+}
+
+.infoConatiner {
+  padding: 20px !important;
+}
+
+.breadContainer {
+  display: flex;
+}
+
+.breadContainer .breadcrumb {
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 14px !important;
+  color: #495057;
+  margin-bottom: 20px;
+  margin-left: auto;
+}
+
+@media (max-width: 768px) {
+  .cardPreview {
+    margin-right: 0px;
+  }
+}

@@ -1,0 +1,93 @@
+nav {
+  display: flex;
+  padding: 10px;
+}
+
+.container {
+  padding: 25px;
+  background-color: #f6f6f9;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-clip: border-box;
+  margin-bottom: 24px;
+  -webkit-box-shadow: 0 0.75rem 1.5rem rgb(18 38 63 / 3%);
+  box-shadow: 0 0.75rem 1.5rem rgb(18 38 63 / 3%);
+
+  border-radius: 15px;
+  background-color: #fff;
+}
+.rowCard {
+  padding: 20px;
+}
+
+.cardBody {
+  flex: 1 1 auto;
+  padding: 1rem 1rem;
+}
+
+h3 {
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 16px !important;
+  color: #495057;
+  margin-bottom: 20px;
+}
+
+.buscador {
+  width: 100%;
+}
+
+.codigo {
+  color: white;
+  background-color: #282c34;
+}
+
+.codigo pre {
+  padding: 20px 5px;
+}
+
+.autocomplete {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.autocompleteItems {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocompleteItem {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.autocompleteItems div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+.autocompleteItem:hover {
+  background-color: #d4d4d4;
+}
+
+#Sugerencia:hover {
+  background-color: #d4d4d4;
+}

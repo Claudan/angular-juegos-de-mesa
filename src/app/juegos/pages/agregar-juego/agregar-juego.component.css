@@ -1,0 +1,101 @@
+nav {
+  display: flex;
+  padding: 10px;
+}
+
+.container {
+  padding: 25px;
+  background-color: #f6f6f9;
+}
+
+.error-group {
+  display: grid;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-clip: border-box;
+  margin-bottom: 24px;
+  -webkit-box-shadow: 0 0.75rem 1.5rem rgb(18 38 63 / 3%);
+  box-shadow: 0 0.75rem 1.5rem rgb(18 38 63 / 3%);
+
+  border-radius: 15px;
+  background-color: #fff;
+}
+.rowCard {
+  padding: 20px;
+}
+
+.cardBody label {
+  font-weight: 600;
+}
+
+.cardBody .form-group {
+  padding: 0px 0px 10px 0px;
+}
+
+.cantidadJugadoresMin {
+  padding-right: 5px !important;
+}
+
+.cantidadJugadoresMax {
+  padding-left: 5px !important;
+}
+.cardBody {
+  flex: 1 1 auto;
+  padding: 1rem 1rem;
+}
+
+.cardBody form span {
+  color: red;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex p {
+  margin-right: 7px;
+  margin-bottom: 0px;
+}
+
+h3 {
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 16px !important;
+  color: #495057;
+  margin-bottom: 20px;
+}
+
+.captchaWrapper {
+  width: fit-content;
+  margin-left: auto;
+  margin-top: 10px;
+}
+
+.captchaWrapper div div div {
+  margin-left: auto;
+}
+.captchaWrapper p {
+  color: red;
+}
+
+.submitBtn {
+  float: right;
+  width: 300px;
+  margin-top: 10px;
+}
+
+.spinner {
+  color: white !important;
+}
+@media (max-width: 768px) {
+  .submitBtn {
+    width: 100%;
+  }
+}

@@ -18,7 +18,7 @@ const routes: Routes = [
         component: ListadoComponent,
       },
       {
-        path: 'juego-detallado',
+        path: 'juego-detallado/:nombre',
         component: JuegoDetalladoComponent,
       },
       {

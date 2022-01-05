@@ -1,1 +1,46 @@
-<p>juego-detallado works!</p>
+<div class="container">
+  <div class="breadContainer">
+    <h3>Juego Detallado</h3>
+    <a class="breadcrumb" routerLink="/juegos/listado"> Volver al inicio </a>
+  </div>
+  <div class="card" *ngIf="isLoading; else cardLoaded">Cargando...</div>
+  <ng-template #cardLoaded>
+    <div class="card">
+      <div class="row" *ngIf="!juego; else divJuegoEncontrado">
+        <div class="imgContainer col-4">
+          <img class="card-img-top" src="{{ imagen }}" alt="nombre juego" />
+        </div>
+        <div class="infoConatiner col-8">
+          <h5 class="card-title">404 - Juego no encontrado</h5>
+          <p class="card-text">Se adjunta un gato por las molestias.</p>
+        </div>
+      </div>
+      <ng-template #divJuegoEncontrado>
+        <div class="row">
+          <div class="imgContainer col-lg-4 col-sm-12">
+            <img
+              class="card-img-top"
+              src="{{ juego.imagenes[0].ruta }}"
+              alt="nombre juego"
+            />
+          </div>
+          <div class="infoConatiner col-lg-8 col-sm-12">
+            <h5 class="card-title">{{ juego.nombre }}</h5>
+            <p class="card-text">{{ juego.descripcion }}</p>
+            <ul>
+              <li>Desarrollador: {{ juego.desarrollador }}</li>
+              <li>Edad mínima: {{ juego.edad_minima }} años</li>
+              <li>
+                Jugadores:
+                {{ juego.cantidad_jugadores_minima }}-{{
+                  juego.cantidad_jugadores_maxima
+                }}
+              </li>
+              <li>Duración aproximada: {{ juego.duracion }} minutos</li>
+            </ul>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </ng-template>
+</div>

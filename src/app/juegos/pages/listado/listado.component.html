@@ -17,12 +17,19 @@
             <li>Desarrollador: {{ juego.desarrollador }}</li>
             <li>Edad mínima: {{ juego.edad_minima }} años</li>
             <li>
-              Jugadores: {{ juego.cantidad_jugadores_minima }} " - "
-              {{ juego.cantidad_jugadores_maxima }}
+              Jugadores: {{ juego.cantidad_jugadores_minima }}-{{
+                juego.cantidad_jugadores_maxima
+              }}
             </li>
             <li>Duración aproximada: {{ juego.duracion }} minutos</li>
           </ul>
-          <a class="valorar btn btn-light"> ver detalles </a>
+          <a
+            class="valorar btn btn-light"
+            [routerLink]="['/juegos/juego-detallado/' + juego.nombre]"
+          >
+            <fa-icon [icon]="faInfo" class="faInfo"></fa-icon>
+            ver detalles
+          </a>
         </div>
       </div>
     </div>

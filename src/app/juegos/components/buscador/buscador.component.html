@@ -1,0 +1,30 @@
+<form class="formBusqueda">
+  <span class="spanBusqueda">
+    <fa-icon [icon]="faSearch" class="faSearch"></fa-icon>
+  </span>
+  <div class="autocomplete">
+    <input
+      class="form-control inputBusqueda"
+      type="search"
+      aria-label="Search"
+      autoComplete="off"
+      placeholder="Búsqueda"
+      name="q"
+      [(ngModel)]="termino"
+      (input)="buscaSugerencias()"
+      (focus)="focus(true)"
+      (blur)="focus(false)"
+      (keyup.enter)="onEnter()"
+    />
+    <div class="autocompleteItems" *ngIf="isBusquedaFocus">
+      <div
+        id="autocompleteItem"
+        className="autocompleteItem"
+        *ngFor="let sugerencia of sugerencias"
+        (mousedown)="navegar(sugerencia)"
+      >
+        <strong>{{ sugerencia }}</strong>
+      </div>
+    </div>
+  </div>
+</form>

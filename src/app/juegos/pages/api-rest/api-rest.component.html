@@ -1,1 +1,51 @@
-<p>api-rest works!</p>
+<div class="container">
+  <h3>api rest</h3>
+  <div class="card">
+    <div class="rowCard">
+      <div class="cardBody">
+        <p class="card-text">
+          Para este mini proyecto desarrollé un microservicio rest (tiene
+          habilitado CORS), el cual provee los endpoints necesarios.
+        </p>
+        <p class="card-text">
+          A continuación se muestra un ejemplo que permite consultar por un
+          juego de mesa dado un nombre.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h3>Consultas por nombre del juego</h3>
+    <div class="card">
+      <div class="rowCard">
+        <div class="cardBody">
+          <div class="autocomplete">
+            <input
+              type="text"
+              class="buscador"
+              [(ngModel)]="termino"
+              (input)="buscaSugerencias()"
+              (focus)="focus(true)"
+              (blur)="focus(false)"
+            />
+            <div class="autocompleteItems" *ngIf="isBusquedaFocus">
+              <div
+                *ngFor="let sugerencia of sugerencias"
+                class="autocompleteItem"
+                id="Sugerencia"
+                (mousedown)="handleSugerencia(sugerencia)"
+              >
+                <strong>{{ sugerencia }}</strong>
+              </div>
+            </div>
+          </div>
+          <div class="codigo">
+            <app-codigo-detallado
+              [consultado]="consultado"
+            ></app-codigo-detallado>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

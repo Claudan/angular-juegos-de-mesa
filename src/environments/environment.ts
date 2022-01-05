@@ -5,6 +5,9 @@
 export const environment = {
   production: false,
   backend: 'http://localhost:5000',
+  recaptcha: {
+    siteKey: '6LdqgL8dAAAAABK9ys46GlG1W0AbaQHiPeLVCjO4',
+  },
 };
 
 /*

@@ -1,4 +1,4 @@
-<div class="sidebar">
+<div [ngClass]="isSidebarOpen ? 'sidebar' : 'sidebar sidebarClicked'">
   <div class="userContainer">
     <div class="avatarContainer">
       <span class="avatar">UI</span>
@@ -41,28 +41,19 @@
     </ul>
   </div>
 </div>
-<div class="mainLayout main-layout">
+<div
+  [ngClass]="
+    isSidebarOpen
+      ? 'mainLayout main-layout'
+      : 'mainLayout main-layout mainLayoutClicked'
+  "
+>
   <nav class="nav">
     <div class="buscadorContainer">
-      <div>
+      <div (click)="burguer()">
         <fa-icon [icon]="faBars" class="faBars"></fa-icon>
       </div>
-      <form class="formBusqueda">
-        <span class="spanBusqueda">
-          <fa-icon [icon]="faSearch" class="faSearch"></fa-icon>
-        </span>
-        <div class="autocomplete">
-          <input
-            class="form-control inputBusqueda"
-            type="search"
-            aria-label="Search"
-            autoComplete="off"
-            placeholder="Búsqueda"
-            name="q"
-          />
-          <div class="autocompleteItems"></div>
-        </div>
-      </form>
+      <app-buscador class="appBuscadorContainer"></app-buscador>
     </div>
 
     <div class="logo">

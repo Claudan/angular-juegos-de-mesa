@@ -1,1 +1,141 @@
-<p>agregar-juego works!</p>
+<div class="container">
+  <h3>Agregar juego</h3>
+  <div class="card">
+    <div class="rowCard">
+      <div class="cardBody">
+        <form
+          (ngSubmit)="guardar()"
+          [formGroup]="formulario"
+          autocomplete="off"
+        >
+          <div class="row">
+            <div class="form-group">
+              <label>Nombre del juego</label>
+              <input
+                class="form-control"
+                type="text"
+                formControlName="nombre"
+              />
+              <span *ngIf="campoNoValido('nombre')">{{ nombreErrorMsg }}</span>
+            </div>
+            <div class="form-group">
+              <label>Desarrollador</label>
+              <input
+                class="form-control"
+                type="text"
+                formControlName="desarrollador"
+              />
+              <span *ngIf="campoNoValido('desarrollador')">{{
+                desarrolladorErrorMsg
+              }}</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Descripción</label>
+            <input
+              class="form-control"
+              type="text"
+              formControlName="descripcion"
+            />
+            <span *ngIf="campoNoValido('descripcion')">{{
+              descripcionErrorMsg
+            }}</span>
+          </div>
+          <div class="form-group">
+            <label>Edad mínima en años</label>
+            <input
+              class="form-control"
+              type="number"
+              formControlName="edad_minima"
+            />
+            <span *ngIf="campoNoValido('edad_minima')">{{
+              edadMinimaErrorMsg
+            }}</span>
+          </div>
+          <div class="form-group">
+            <label>Duración promedio en minutos</label>
+            <input
+              class="form-control"
+              type="number"
+              formControlName="duracion"
+            />
+            <span *ngIf="campoNoValido('duracion')">{{
+              duracionErrorMsg
+            }}</span>
+          </div>
+          <div class="row">
+            <div class="cantidadJugadoresMin form-group col-6">
+              <label>Cantidad de jugadores mínima</label>
+              <input
+                class="form-control"
+                type="number"
+                formControlName="cantidad_jugadores_minima"
+              />
+              <span *ngIf="campoNoValido('cantidad_jugadores_minima')">{{
+                cantidadJugadoresMinimaErrorMsg
+              }}</span>
+            </div>
+            <div class="cantidadJugadoresMax form-group col-6">
+              <label>Cantidad de jugadores máxima</label>
+              <input
+                class="form-control"
+                type="number"
+                formControlName="cantidad_jugadores_maxima"
+              />
+              <span *ngIf="campoNoValido('cantidad_jugadores_maxima')">{{
+                cantidadJugadoresMaximaErrorMsg
+              }}</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Imagen</label>
+            <input
+              type="file"
+              class="form-control"
+              (change)="onFileChanged($event)"
+              formControlName="imagenes"
+            />
+            <div class="error-group">
+              <span *ngIf="campoNoValido('imagenes')">{{
+                imagenesErrorMsg
+              }}</span>
+              <span *ngIf="!pesoValido()">Debe tener un peso menor 5mb</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email usuario</label>
+            <input class="form-control" type="email" formControlName="email" />
+            <span *ngIf="campoNoValido('email')">{{ emailErrorMsg }}</span>
+          </div>
+          <div class="form-group">
+            <label>Constraseña</label>
+            <input
+              class="form-control"
+              type="password"
+              formControlName="password"
+            />
+            <span *ngIf="campoNoValido('password')">{{
+              passwordErrorMsg
+            }}</span>
+          </div>
+          <div class="form-group">
+            <div class="captchaWrapper">
+              <re-captcha (resolved)="resolved($event)"></re-captcha>
+            </div>
+          </div>
+          <!-- <button disabled class="submitBtn btn btn-primary">
+            <span
+              class="spinner spinner-border spinner-border-sm"
+              role="status"
+              aria-hidden="true"
+            ></span>
+          </button> -->
+          <button type="submit" class="submitBtn btn btn-primary">
+            Confirmar
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <h1>{{ formulario.valid }}</h1> -->

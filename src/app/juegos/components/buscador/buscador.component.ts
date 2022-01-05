@@ -1,44 +1,35 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { faSearch, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { Juego } from '../../interfaces/buscador.interface';
 import { JuegosService } from '../../services/juegos.service';
 
 @Component({
-  selector: 'app-api-rest',
-  templateUrl: './api-rest.component.html',
-  styleUrls: ['./api-rest.component.css'],
+  selector: 'app-buscador',
+  templateUrl: './buscador.component.html',
+  styleUrls: ['./buscador.component.css'],
 })
-export class ApiRestComponent implements OnInit {
+export class BuscadorComponent implements OnInit {
+  faSearch: IconDefinition = faSearch;
   termino: string = '';
   juegos: Juego[] = [];
   sugerencias: string[] = [];
-  sugerenciasIniciales: string[] = [];
-  maxSugerencias: number = 7;
+  maxSugerencias: number = 8;
   isBusquedaFocus: boolean = false;
-  consultado: string = '';
 
-  constructor(private JuegosService: JuegosService) {}
+  constructor(private JuegosService: JuegosService, private router: Router) {}
 
   ngOnInit(): void {
     this.JuegosService.getAutocomplete().subscribe((resp) => {
       let sugerenciasIniciales: string[] = [];
       resp.juegos.map((juego: Juego, i: number) => {
-        if (i < this.maxSugerencias) {
+        if (i <= this.maxSugerencias) {
           sugerenciasIniciales.push(juego.nombre);
-        }
-        if (i === 0) {
-          this.consultado = juego.nombre;
-          this.termino = juego.nombre;
         }
       });
       this.sugerencias = sugerenciasIniciales;
-      this.sugerenciasIniciales = sugerenciasIniciales;
       this.juegos = resp.juegos;
     });
-  }
-
-  handleSugerencia(sugerencia: string) {
-    this.consultado = sugerencia;
-    this.termino = sugerencia;
   }
 
   buscaSugerencias() {
@@ -60,9 +51,13 @@ export class ApiRestComponent implements OnInit {
 
   focus(encendido: boolean) {
     this.isBusquedaFocus = encendido;
-    if (encendido) {
-      this.termino = '';
-      this.sugerencias = this.sugerenciasIniciales;
-    }
+  }
+
+  onEnter() {
+    this.router.navigateByUrl('/juegos/juego-detallado/' + this.termino);
+  }
+
+  navegar(sugerencia: string) {
+    this.router.navigateByUrl('/juegos/juego-detallado/' + sugerencia);
   }
 }
