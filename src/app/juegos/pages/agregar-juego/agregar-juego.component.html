@@ -121,21 +121,31 @@
           <div class="form-group">
             <div class="captchaWrapper">
               <re-captcha (resolved)="resolved($event)"></re-captcha>
+
+              <span *ngIf="recaptchaTouched && !tokenRecaptcha">
+                Verifique el captcha
+              </span>
             </div>
           </div>
-          <!-- <button disabled class="submitBtn btn btn-primary">
-            <span
-              class="spinner spinner-border spinner-border-sm"
-              role="status"
-              aria-hidden="true"
-            ></span>
-          </button> -->
-          <button type="submit" class="submitBtn btn btn-primary">
+
+          <button
+            type="submit"
+            *ngIf="!isLoading; else spinner"
+            class="submitBtn btn btn-primary"
+          >
             Confirmar
           </button>
+          <ng-template #spinner>
+            <button disabled class="submitBtn btn btn-primary">
+              <span
+                class="spinner spinner-border spinner-border-sm"
+                role="status"
+                aria-hidden="true"
+              ></span>
+            </button>
+          </ng-template>
         </form>
       </div>
     </div>
   </div>
 </div>
-<!-- <h1>{{ formulario.valid }}</h1> -->

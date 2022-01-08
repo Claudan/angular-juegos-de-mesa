@@ -7,6 +7,9 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
+import { finalize } from 'rxjs';
+import Swal from 'sweetalert2';
+import { JuegosService } from '../../services/juegos.service';
 
 @Component({
   selector: 'app-agregar-juego',
@@ -15,7 +18,9 @@ import {
 })
 export class AgregarJuegoComponent implements OnInit {
   imagen: File = new File([], '');
-  tokenRecaptcha: string = '';
+  tokenRecaptcha: string | null = null;
+  recaptchaTouched: boolean = false;
+  isLoading: boolean = false;
 
   emailPattern: string = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
 
@@ -38,7 +43,7 @@ export class AgregarJuegoComponent implements OnInit {
     password: ['', [Validators.required]],
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private JuegosService: JuegosService) {}
 
   ngOnInit(): void {}
 
@@ -86,11 +91,48 @@ export class AgregarJuegoComponent implements OnInit {
       this.formulario.markAllAsTouched();
       return;
     }
+
+    if (!this.tokenRecaptcha) {
+      this.recaptchaTouched = true;
+      return;
+    }
+
     if (!this.pesoValido()) {
       return;
     }
-    console.log('enviando el post');
-    console.log(this.formulario.value);
+
+    const formData = new FormData();
+    const form = this.formulario.value;
+    formData.set('tokenRecaptcha', this.tokenRecaptcha);
+    formData.set('nombre', form.nombre);
+    formData.set('desarrollador', form.desarrollador);
+    formData.set('descripcion', form.descripcion);
+    formData.set('edad_minima', form.edad_minima);
+    formData.set('duracion', form.duracion);
+    formData.set('cantidad_jugadores_minima', form.cantidad_jugadores_minima);
+    formData.set('cantidad_jugadores_maxima', form.cantidad_jugadores_maxima);
+    formData.append('imagenes', this.imagen);
+    formData.set('email', form.email);
+    formData.set('password', form.password);
+    this.isLoading = true;
+    this.JuegosService.insertaJuego(formData)
+      .pipe(finalize(() => (this.isLoading = false)))
+      .subscribe({
+        next: () => {
+          Swal.fire(
+            'Agregado correctamente',
+            'El juego de mesa se ha agregado en nuestro sistema',
+            'success'
+          );
+        },
+        error: () => {
+          Swal.fire(
+            'No se ha podido agregar',
+            'Verifica que tus credenciales sean correctas y que el juego no haya sido agregado previamente',
+            'error'
+          );
+        },
+      });
   }
 
   get nombreErrorMsg(): string {

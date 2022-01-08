@@ -31,8 +31,29 @@ export class JuegosService {
       `${this.baseUrl}/buscador/autocomplete`
     );
   }
-  insertaJuego(data: any): Observable<any> {
-    console.log('se está eniando la data: ', data);
-    return this.http.post(`${this.baseUrl}/juego/insertaJuego`, data);
+  insertaJuego(
+    nombre: string,
+    desarrollador: string,
+    descripcion: string,
+    edad_minima: number,
+    duracion: number,
+    cantidad_jugadores_minima: number,
+    cantidad_jugadores_maxima: number,
+    imagen: File,
+    email: string,
+    password: string
+  ) {
+    return this.http.post(`${this.baseUrl}/juego/insertaJuego`, {
+      nombre,
+      desarrollador,
+      descripcion,
+      edad_minima,
+      duracion,
+      cantidad_jugadores_minima,
+      cantidad_jugadores_maxima,
+      imagen,
+      email,
+      password,
+    });
   }
 }

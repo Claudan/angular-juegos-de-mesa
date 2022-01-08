@@ -13,6 +13,10 @@
 # profiling files
 chrome-profiler-events*.json
 
+#env
+/src/environments/environment.prod.ts
+/src/environments/environment.ts
+
 # IDEs and editors
 /.idea
 .project
@@ -23,6 +27,7 @@ chrome-profiler-events*.json
 *.sublime-workspace
 
 # IDE - VSCode
+/.vscode
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
@@ -40,7 +45,7 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
-/src/environments/**
+/src/environments
 
 # System Files
 .DS_Store
