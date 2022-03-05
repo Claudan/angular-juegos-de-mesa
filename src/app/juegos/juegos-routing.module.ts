@@ -14,6 +14,11 @@ const routes: Routes = [
     component: HomeComponent,
     children: [
       {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'listado',
+      },
+      {
         path: 'listado',
         component: ListadoComponent,
       },
